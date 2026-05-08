@@ -1,0 +1,181 @@
+/* ─────────────────────────────────────────────
+   components.css — Textures, buttons, shared UI
+───────────────────────────────────────────── */
+
+/* ─── WOOD GRAIN TEXTURES ─── */
+.wood-texture {
+  position: relative;
+  background-color: var(--wood-dark);
+  background-image:
+    repeating-linear-gradient(88deg,
+      transparent 0px, rgba(255,255,255,0.012) 1px,
+      transparent 2px, transparent 12px),
+    repeating-linear-gradient(92deg,
+      transparent 0px, rgba(0,0,0,0.08) 1px,
+      transparent 3px, transparent 18px),
+    repeating-linear-gradient(89.5deg,
+      transparent 0px, rgba(200,145,60,0.06) 2px,
+      transparent 4px, transparent 30px);
+}
+
+.wood-panel {
+  background-color: var(--wood-mid);
+  background-image:
+    repeating-linear-gradient(88deg,
+      transparent 0px, rgba(255,255,255,0.04) 1px,
+      transparent 2px, transparent 8px),
+    repeating-linear-gradient(91deg,
+      transparent 0px, rgba(0,0,0,0.07) 1px,
+      transparent 3px, transparent 20px);
+}
+
+/* ─── BUTTONS ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-gold);
+  color: var(--wood-dark);
+  padding: 13px 28px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s, transform 0.15s;
+  letter-spacing: 0.2px;
+}
+.btn-primary:hover  { opacity: 0.88; transform: translateY(-1px); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--wood-pale);
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid rgba(200,146,42,0.35);
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+}
+.btn-outline:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  transform: translateY(-1px);
+}
+
+/* ─── SECTION WRAPPERS ─── */
+.section     { padding: 80px 3rem; }
+.section-alt { background: var(--wood-cream); }
+
+.section-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--wood-warm);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.3;
+  margin-bottom: 18px;
+}
+.section-desc {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 48px;
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(196,154,108,0.35) 30%,
+    rgba(196,154,108,0.35) 70%,
+    transparent);
+  margin: 0 3rem;
+}
+
+/* ─── SHARED HERO ELEMENTS ─── */
+.hero-tag {
+  display: inline-block;
+  background: rgba(200,146,42,0.18);
+  color: var(--accent-gold);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 2px;
+  border-left: 2px solid var(--accent-gold);
+  margin-bottom: 20px;
+}
+
+.hero-bg-rings {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-bg-rings::before {
+  content: '';
+  position: absolute;
+  right: -120px; top: -120px;
+  width: 520px; height: 520px;
+  border-radius: 50%;
+  border: 60px solid rgba(200,146,42,0.08);
+}
+.hero-bg-rings::after {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 360px; height: 360px;
+  border-radius: 50%;
+  border: 30px solid rgba(200,146,42,0.05);
+}
+
+/* ─── SAVING BADGE ─── */
+.saving-badge {
+  display: inline-block;
+  background: rgba(160,64,32,0.1);
+  color: var(--accent-rust);
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-top: 12px;
+  letter-spacing: 0.3px;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up   { animation: fadeUp 0.55s ease forwards; }
+.fade-up-1 { animation-delay: 0.05s; opacity: 0; }
+.fade-up-2 { animation-delay: 0.15s; opacity: 0; }
+.fade-up-3 { animation-delay: 0.25s; opacity: 0; }
+.fade-up-4 { animation-delay: 0.35s; opacity: 0; }
+
+/* ─── PAGE VISIBILITY ─── */
+.page         { display: none; }
+.page.active  { display: block; }
